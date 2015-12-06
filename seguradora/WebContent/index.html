@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Hello</title>
-</head>
-<body>
-Hello
-</body>
+﻿<!DOCTYPE html>
+<html ng-app="seguradora" ng-controller="init-ctrl">
+  <head >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css" />
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="components/bootstrap/css/bootstrap-theme.min.css" />
+	
+    <style type="text/css">
+    	.red {
+    		color: red;
+    </style>
+  </head>
+  <body ng-controller="index-ctrl">
+  	
+	<div id="out"></div>
+    <h1 ng-bind="title"></h1>
+    <ul class="nav nav-pills">
+		<li ng-repeat="link in links" role="presentation" ><a href="{{link.href}}">{{link.label}}</a></li>
+	</ul>
+    <div ng-view></div>
+    
+    <!-- Angular -->
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
+    <script type="text/javascript" src="js/apps/app.js"></script>
+    
+    <script type="text/javascript" src="components/jquery/jquery-2.1.4.min.js"></script>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="components/bootstrap/ui-bootstrap-tpls-0.13.1.min.js"></script>    
+    <!-- Index -->
+    <script type="text/javascript" src="js/controllers/Index.js"></script>
+    <!-- Proposta -->
+    <script type="text/javascript" src="js/controllers/Proposta.js"></script>
+	
+  </body>
 </html>

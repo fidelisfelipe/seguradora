@@ -1,0 +1,89 @@
+<div class="pages">
+	<h1>{{title}}</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Dados do Seguro</div>
+  <div class="panel-body">
+  
+		<form class="form-horizontal" role="form">	
+			
+		  <div class="form-group"> 
+		  	<label class="control-label col-sm-2" for="tipoSeguro">Seguro</label>
+		    <div class="col-sm-5">
+			    <label class="radio-inline"><input type="radio" name="tipoSeguro">Novo</label>
+				<label class="radio-inline"><input type="radio" name="tipoSeguro">Renovação</label>
+		    </div>
+		  </div>	
+		  <!-- CI -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="ci">CI:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="ci" placeholder="CI">
+		    </div>
+		  </div>
+		  <!-- Seguradora -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="seguradora">Seguradora:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="seguradora" placeholder="Seguradora">
+		    </div>
+		  </div>
+		  <!-- Vigencia -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="vigencia">Vigência:</label>
+		    <div class="col-sm-2">
+		      <input type="date" class="form-control" id="vigenciaDe" placeholder="01/01/2016">
+		      à
+		      <input type="date" class="form-control" id="vigenciaAte" placeholder="01/01/2016">
+		      </div>
+		  </div>
+		  
+		    <!-- Nº Apólice -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="apolice">Nº Apólice:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="apolice" placeholder="Nº Apólice">
+		    </div>
+		  </div>
+		  <!-- Houve Sinistro -->
+		   <div class="form-group"> 
+		  	<label class="control-label col-sm-2" for="sinistro">Houve Sinistro este Ano?</label>
+		    <div class="col-sm-5">
+			    <label class="radio-inline"><input type="radio" name="optradio">Sim</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Não</label>
+		    </div>
+		  </div>
+		  
+		  <!-- Classe de Bônus -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="bonus">Classe de Bônus</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="bonus" placeholder="Classe de Bônus">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-5">
+		      <button type="submit" class="btn btn-default">Gravar</button>
+		    </div>
+		  </div>
+		  
+		</form>
+		
+  </div>
+</div>		
+
+<div class="panel panel-default">
+  <div class="panel-heading">Dados do Titular</div>
+  <div class="panel-body">
+	<form class="form-horizontal" role="form">
+	 	<!-- CI -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="nome">Nome:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="nome" placeholder="Nome">
+		    </div>
+		  </div>
+	</form>
+  </div>	
+</div>
