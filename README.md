@@ -1,0 +1,2 @@
+# seguradora
+Crud de Seguradora
