@@ -1,7 +1,9 @@
    /**
 	 * Proposta
 	 */
-	function Proposta(id, seguro){
+	function Proposta(id, seguro, titular, menor, 
+			condutorPrincipal, veiculo, cobertura,
+			situacao, dtVigencia, isTransmitida){
 		this.id = id;
 		this.seguro = seguro;
 		this.titular = titular;
@@ -40,7 +42,7 @@
 	/**
 	 * Pessoa
 	 **/
-	function Pessoa(id, nome, dtEmissao, dtNascimento, orgEmissor, dtEmissao, 
+	function Pessoa(id, nome, dtEmissao, dtNascimento, sexo, orgEmissor,  
 			profissao, estadoCivil, endereco, cep, bairro, cidade, telefone, email, 
 			habilitacao, dtValidade, dtPrimeiraHabilitacao){
 		this.id = id;
@@ -48,8 +50,8 @@
 		this.rg = rg;
 		this.dtEmissao = dtEmissao;
 		this.dtNascimento = dtNascimento;
+		this.sexo = sexo;
 		this.orgEmissor = orgEmissor;
-		this.dtEmissao = dtEmissao;
 		this.profissao = profissao;
 		this.estadoCivil = estadoCivil;
 		this.endereco = endereco;
@@ -166,6 +168,13 @@
 	function setIndexCtrl(scope, interval, log, modal, rootScope){
 		console.log("proposta-ctrl");
 		scope.title = "Propostas";
-		scope.seguro = new Seguro();
+		scope.proposta = new Proposta();
+		scope.seguradoras = [
+				               {id:1, nome: 'Porto Seguros'},
+				               {id:2, nome: 'Itaú Seguros'}
+				              ];
+		scope.validarCampos = function(){
+			log.info("validar campos");
+		}
 		
 	}

@@ -17,7 +17,7 @@
 	controllers.controller('index-ctrl', [nameVarInject, nameVarInterval, nameVarLog,nameVarRootScope,  setIndexCtrl]);
 	function setIndexCtrl(scope, interval, log, rootScope){
 		console.log("index-ctrl");
-		scope.title = "Seguradora";
+		scope.title = "Andrade & Associados Corretora de Seguros";
 		scope.links = [
 		               {label:'Proposta', href:'#proposta'}
 		               ];
