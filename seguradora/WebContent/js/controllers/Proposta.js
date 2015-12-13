@@ -23,6 +23,11 @@
 		this.id = id;
 		this.nome = nome;
 	}
+	
+	function TipoSeguro(id, nome){
+		this.id = id;
+		this.nome = nome;
+	}
 
 	/**
 	 * Seguro
@@ -173,8 +178,37 @@
 				               {id:1, nome: 'Porto Seguros'},
 				               {id:2, nome: 'Itaú Seguros'}
 				              ];
+		scope.tipoSeguroList = [
+				               {id:1, nome: 'Novo'},
+				               {id:2, nome: 'Renovação'}
+				              ];
 		scope.validarCampos = function(){
 			log.info("validar campos");
 		}
+		setMask();
+	}
+	
+	function setMask(){
+		
+		$("input").each(function(){
+			var mascara = $(this).attr("mask");
+			if(mascara == 'maskCpf'){
+				$(this).mask('000.000.000-00', {reverse: true, clearIfNotMatch: true});
+			}else if(mascara == 'maskAlfaNumerico'){
+				
+			}else if(mascara == 'maskData'){
+				$(this).mask('00/00/0000', {clearIfNotMatch: true});
+			}else if(mascara == 'maskCep'){
+				$(this).mask('00000-000', {reverse: true, clearIfNotMatch: true});
+			}else if(mascara == 'maskTelefone'){
+				$(this).mask('(00) 0000-0000', {clearIfNotMatch: true});
+			}else if(mascara == 'maskEmail'){
+				
+			}else if(mascara == 'maskNumerico'){
+				
+			}else if(mascara == 'maskPlaca'){
+				$(this).mask('AAA-0000', {clearIfNotMatch: true});
+			}
+		});
 		
 	}

@@ -1,21 +1,21 @@
 <div class="pages">
   <h3>{{title}}</h3>
 
+<form class="form-horizontal" role="form">
 
 <div class="panel panel-default">
   <div class="panel-heading" >Dados do Seguro</div>
   <div class="panel-body">
   
-		<form class="form-horizontal" role="form">	
-			
 		  <div class="form-group"> 
 		  	<label class="control-label col-sm-2" for="tipoSeguro">Seguro</label>
-		    <div class="col-sm-5">
-		    	<div class="radio">
-			    <label class="radio-inline"><input type="radio" name="tipoSeguro">Novo</label>
-			    </div>
-			    <div class="radio">
-				<label class="radio-inline" ><input type="radio" name="tipoSeguro" >Renovação do Seguro</label>
+		  	<div class="col-sm-5">
+		    	<div class="form-group">
+			    	<div class="col-sm-5">
+					  <select class="form-control" id="sel1">
+					    <option ng-repeat="tipoSeguro in tipoSeguroList" value="{{tipoSeguro.id}}" >{{tipoSeguro.nome}}</option>
+					  </select>
+					</div>
 				</div>
 		    </div>
 		  </div>	
@@ -39,13 +39,18 @@
 				</div>
 		    </div>
 		  </div>
-		  <!-- Vigencia -->
+		  <!-- Vigencia de-->
 		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="vigencia">Vigência:</label>
+		    <label class="control-label col-sm-2" for="vigencia">Vigência de:</label>
 		    <div class="col-sm-2">
-		    	
 		      <input type="date" class="form-control" id="vigenciaDe" placeholder="01/01/2016">
-		      à
+		    </div>
+		  </div>
+		  
+		   <!-- Vigencia até-->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="vigencia">Vigência até:</label>
+		    <div class="col-sm-2">
 		      <input type="date" class="form-control" id="vigenciaAte" placeholder="01/01/2016">
 		    </div>
 		  </div>
@@ -58,14 +63,16 @@
 		    </div>
 		  </div>
 		  <!-- Houve Sinistro -->
-		   <div class="form-group"> 
+		  <div class="form-group"> 
 		  	<label class="control-label col-sm-2" for="sinistro">Houve Sinistro este Ano?</label>
 		    <div class="col-sm-5">
-		    	<div class="radio">
-			    	<label class="radio-inline"><input type="radio" name="optradio">Sim</label>
-				</div>
-				<div class="radio">
-					<label class="radio-inline"><input type="radio" name="optradio">Não</label>
+		    	<div class="form-group">
+			    	<div class="col-sm-5">
+					  <select class="form-control" id="isHouveSinistro">
+					    <option value="true" >SIM</option>
+					    <option value="false" >Não</option>
+					  </select>
+					</div>
 				</div>
 		    </div>
 		  </div>
@@ -77,13 +84,6 @@
 		      <input type="text" class="form-control" id="bonus" placeholder="Classe de Bônus">
 		    </div>
 		  </div>
-		  <!-- Submit -->
-		   <div class="form-group"> 
-		    <div class="col-sm-offset-2 col-sm-5">
-		      <button type="submit" class="btn btn-default">Gravar</button>
-		    </div>
-		  </div>
-		</form>
 		
   </div>
 </div>		
@@ -91,7 +91,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">Dados do Titular</div>
   <div class="panel-body">
-	<form class="form-horizontal" role="form">
 	 	<!-- Nome -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="nome">Nome:</label>
@@ -103,6 +102,12 @@
 		    <label class="control-label col-sm-2" for="rg">RG:</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="rg" placeholder="RG">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="cpf">CPF:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -144,6 +149,7 @@
 		  <!-- Possui Garagem -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="isGaragem">Possui Garagem:</label>
+		    
 		    <div class="col-sm-5">
 		    	<div class="form-group">
 			    	<div class="col-sm-5">
@@ -158,7 +164,7 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="cep">Cep:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="CEP">
+		      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -176,7 +182,7 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="telefone">Telefone:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+		      <input type="text" class="form-control" id="telefone" placeholder="Telefone" mask="maskTelefone">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -203,14 +209,12 @@
 		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
 		    </div>
 		  </div>
-	</form>
   </div>	
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Dados do Condutor Principal</div>
   <div class="panel-body">
-	<form class="form-horizontal" role="form">
 	 	<!-- Nome -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="nome">Nome:</label>
@@ -222,6 +226,12 @@
 		    <label class="control-label col-sm-2" for="rg">RG:</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="rg" placeholder="RG">
+		    </div>
+		  </div>
+		   <div class="form-group">
+		    <label class="control-label col-sm-2" for="cpf">CPF:</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -267,7 +277,7 @@
 		    	<div class="form-group">
 			    	<div class="col-sm-5">
 					  <select class="form-control" id="isGaragem">
-					    <option value="true" >SIM</option>
+					    <option value="true" >Sim</option>
 					    <option value="false" >Não</option>
 					  </select>
 					</div>
@@ -277,11 +287,11 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="cep">Cep:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="CEP">
+		      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cep">Bairro:</label>
+		    <label class="control-label col-sm-2" for="bairro">Bairro:</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="bairro" placeholder="Bairro">
 		    </div>
@@ -322,14 +332,12 @@
 		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
 		    </div>
 		  </div>
-	</form>
   </div>	
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Perfil do Condutor Principal</div>
   <div class="panel-body">
-	<form class="form-horizontal" role="form">
 	 	<!-- Endereço do Trabalho -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="enderecoTrabalho">Endereço do Trabalho:</label>
@@ -341,17 +349,21 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="isGaragem">Possui Garagem:</label>
 		    <div class="col-sm-5">
+		    	<div class="form-group">
+			    	<div class="col-sm-5">
 					  <select class="form-control" id="isGaragem">
 					    <option value="true" >SIM</option>
 					    <option value="false" >Não</option>
 					  </select>
+					</div>
+				</div>
 		    </div>
 		  </div>
 		  <!-- Cep -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="cep">Cep:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="Cep">
+		      <input type="text" class="form-control" id="cep" placeholder="Cep" mask="maskCep">
 		    </div>
 		  </div>
 		  <!-- Cidade -->
@@ -371,14 +383,12 @@
 				  </select>
 		    </div>
 		  </div>
-	</form>
   </div>	
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Condutor Menor de 25 anos</div>
   <div class="panel-body">
-	<form class="form-horizontal" role="form">
 	 	<!-- Nome -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="nome">Nome:</label>
@@ -428,14 +438,12 @@
 		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
 		    </div>
 		  </div>
-	</form>
   </div>	
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Dados do Veículo</div>
   <div class="panel-body">
-	<form class="form-horizontal" role="form">
 	 	  <!-- Fabricante -->
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="fabricante">Fabricante:</label>
@@ -513,7 +521,7 @@
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="placa">Placa:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="placa" placeholder="Placa">
+		      <input type="text" class="form-control" id="placa" placeholder="Placa" mask="maskPlaca">
 		    </div>
 		  </div>
 		  <!-- Chassi -->
@@ -551,7 +559,18 @@
 		      <input type="text" class="form-control" id="banco" placeholder="Banco">
 		    </div>
 		  </div>
-	</form>
+		  
+		  <!-- Submit -->
+		   <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-5">
+		      <button type="submit" class="btn btn-default">Gravar</button>
+		    </div>
+		  </div>
+	
   </div>
 </div>
+
+</form>
+
+
 
