@@ -169,8 +169,8 @@
 	 * Ctrl Proposta
 	 **/
 
-	controllers.controller('proposta-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setIndexCtrl]);
-	function setIndexCtrl(scope, interval, log, modal, rootScope){
+	controllers.controller('proposta-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaCtrl]);
+	function setPropostaCtrl(scope, interval, log, modal, rootScope){
 		console.log("proposta-ctrl");
 		scope.title = "Propostas";
 		scope.proposta = new Proposta();
@@ -186,6 +186,21 @@
 			log.info("validar campos");
 		}
 		setMask();
+	}
+	
+	controllers.controller('proposta-list-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaListCtrl]);
+	function setPropostaListCtrl(scope, interval, log, modal, rootScope){
+		console.log("proposta-list-ctrl");
+		scope.title = "Propostas";
+		scope.propostaList = [
+				               {id:1, nome: 'João da Proposta 1', status: 'ativo'},
+				               {id:2, nome: 'Pedro da Proposta 2', status: 'inativo'}
+				              ];
+		scope.removeProposta = function(proposta){
+			var index = scope.propostaList.indexOf(proposta);
+			scope.propostaList.splice(index,1);
+			
+		};
 	}
 	
 	function setMask(){

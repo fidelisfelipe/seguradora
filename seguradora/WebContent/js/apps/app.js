@@ -32,6 +32,10 @@ app.config([ nameRouteProvider , function(routeProvider) {
 		templateUrl : 'proposta.html',
 		controller : 'proposta-ctrl'
 	})
+	.when('/propostas', {
+		templateUrl : 'propostaList.html',
+		controller : 'proposta-list-ctrl'
+	})
 	.otherwise({
 		redirectTo : '/index'
 	});
