@@ -164,46 +164,8 @@
 		this.isRetrovisores = isRetrovisores;
 		this.kmPorMes = kmPorMes;
 	}
-
-	/**
-	 * Ctrl Proposta
-	 **/
-
-	controllers.controller('proposta-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaCtrl]);
-	function setPropostaCtrl(scope, interval, log, modal, rootScope){
-		console.log("proposta-ctrl");
-		scope.title = "Propostas";
-		scope.proposta = new Proposta();
-		scope.seguradoras = [
-				               {id:1, nome: 'Porto Seguros'},
-				               {id:2, nome: 'Itaú Seguros'}
-				              ];
-		scope.tipoSeguroList = [
-				               {id:1, nome: 'Novo'},
-				               {id:2, nome: 'Renovação'}
-				              ];
-		scope.validarCampos = function(){
-			log.info("validar campos");
-		}
-		setMask();
-	}
 	
-	controllers.controller('proposta-list-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaListCtrl]);
-	function setPropostaListCtrl(scope, interval, log, modal, rootScope){
-		console.log("proposta-list-ctrl");
-		scope.title = "Propostas";
-		scope.propostaList = [
-				               {id:1, nome: 'João da Proposta 1', status: 'ativo'},
-				               {id:2, nome: 'Pedro da Proposta 2', status: 'inativo'}
-				              ];
-		scope.removeProposta = function(proposta){
-			var index = scope.propostaList.indexOf(proposta);
-			scope.propostaList.splice(index,1);
-			
-		};
-	}
-	
-	function setMask(){
+function setMascaras(){
 		
 		$("input").each(function(){
 			var mascara = $(this).attr("mask");
@@ -227,3 +189,57 @@
 		});
 		
 	}
+
+	/**
+	 * Ctrl Proposta
+	 **/
+
+	controllers.controller('proposta-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaCtrl]);
+	function setPropostaCtrl(scope, interval, log, modal, rootScope){
+		console.log("proposta-ctrl");
+		scope.title = "Propostas";
+		scope.proposta = new Proposta();
+		scope.seguradoras = [
+				               {id:1, nome: 'Porto Seguros'},
+				               {id:2, nome: 'Itaú Seguros'}
+				              ];
+		scope.tipoSeguroList = [
+				               {id:1, nome: 'Novo'},
+				               {id:2, nome: 'Renovação'}
+				              ];
+		scope.validarCampos = function(){
+			log.info("validar campos");
+		}
+		//setMascaras();
+	}
+	
+	controllers.controller('proposta-list-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaListCtrl]);
+	function setPropostaListCtrl(scope, interval, log, modal, rootScope){
+		console.log('proposta-list-ctrl');
+		scope.title = 'Propostas';
+		var titular1 = new Titular();
+		titular1.nome = 'João Almeida';
+		
+		var titular2 = new Titular();
+		titular2.nome = 'Mário Soares';
+		
+		scope.propostaList = [
+				               {id:1, titular: titular1,
+				            	   seguro: "Itaú Seguros",
+				            	   dtVigencia: '15/01/2016',
+				            	   isTransmitida: 'Sim',
+  			            	       status: 'ativo'},
+				               {id:2, titular: titular2,
+				            		   seguro: 'Porto Seguros',
+				            		   dtVigencia: '10/01/2016',
+				            		   isTransmitida: 'Não',
+				            		   status: 'inativo'}
+				              ];
+		scope.removeProposta = function(proposta){
+			var index = scope.propostaList.indexOf(proposta);
+			scope.propostaList.splice(index,1);
+			
+		};
+	}
+	
+	

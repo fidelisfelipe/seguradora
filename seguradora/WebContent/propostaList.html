@@ -32,7 +32,10 @@
 	              	<table class="table" >
 	              		<thead>
 	              			<th>ID</th>
-	              			<th>Nome</th>
+	              			<th>Titular</th>
+	              			<th>Seguro</th>
+	              			<th>Transmitida</th>
+	              			<th>Data Vigência</th>
 	              			<th></th>
 	              			<th></th>
 	              		</thead>
@@ -41,7 +44,22 @@
 	              				<th>{{proposta.id}}</th>
 		              			<th>
 							        <span editable-text="proposta.nome" e-name="nome" e-form="rowform" onbeforesave="checkName($data, proposta.id)" e-required>
-							          {{ proposta.nome || 'empty' }}
+							          {{ proposta.titular.nome || 'empty' }}
+							        </span>
+							    </th>
+							    <th>
+							        <span editable-text="proposta.seguro" e-name="seguro" e-form="rowform" onbeforesave="checkProposta($data, proposta.id)" e-required>
+							          {{ proposta.seguro || 'empty' }}
+							        </span>
+							    </th>
+							     <th>
+							        <span editable-text="proposta.isTransmitida" e-name="isTransmitida" e-form="rowform" onbeforesave="checkProposta($data, proposta.id)" e-required>
+							          {{ proposta.isTransmitida || 'empty' }}
+							        </span>
+							    </th>
+							     <th>
+							        <span editable-text="proposta.dtVigencia" e-name="dtVigencia" e-form="rowform" onbeforesave="checkDtVigencia($data, proposta.id)" e-required>
+							          {{ proposta.dtVigencia || 'empty' }}
 							        </span>
 							    </th>
 		              			<th><button id="status-{{proposta.id}}" class="btn btn-lg btn-primary glyphicon glyphicon-info-sign" ng-class="{'btn-success': proposta.status == 'ativo', 'btn-danger': proposta.status == 'inativo'}" title="{{proposta.status == 'inativo'? 'Inativo':'Ativo'}}"></button></th>

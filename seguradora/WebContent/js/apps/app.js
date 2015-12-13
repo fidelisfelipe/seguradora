@@ -36,6 +36,10 @@ app.config([ nameRouteProvider , function(routeProvider) {
 		templateUrl : 'propostaList.html',
 		controller : 'proposta-list-ctrl'
 	})
+	.when('/agenda', {
+		templateUrl : 'agenda.html',
+		controller : 'agenda-ctrl'
+	})
 	.otherwise({
 		redirectTo : '/index'
 	});

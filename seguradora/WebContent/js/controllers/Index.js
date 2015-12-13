@@ -20,7 +20,8 @@
 		scope.title = "Andrade & Associados Corretora de Seguros";
 		scope.links = [
 		               {label:'Nova Proposta', href:'#proposta'},
-		               {label:'Lista Propostas', href:'#propostas'}
+		               {label:'Lista Propostas', href:'#propostas'},
+		               {label:'Agenda', href:'#agenda'}
 		               ];
 		
 	}
