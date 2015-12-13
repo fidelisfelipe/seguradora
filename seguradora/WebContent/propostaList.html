@@ -1,0 +1,64 @@
+<div class="pages" ng-controller="proposta-list-ctrl">
+  <h3>{{title}}</h3>
+
+<!-- Filtros -->
+<form class="form-horizontal" role="form">
+<div class="panel panel-default">
+  <div class="panel-heading" >Filtrar por:</div>
+  <div class="panel-body">
+  
+		    <!-- Nº Apólice -->
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="apolice">Nº Apólice:</label>
+		    <div class="col-sm-2">
+		      <input type="text" class="form-control" id="apolice" placeholder="Nº Apólice">
+		    </div>
+		  </div>
+		  
+  </div>
+</div>
+
+</form>
+
+ <!-- Page, data-page contains page name-->
+  <div data-page="propostas" class="page">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="content-block">
+        <div class="content-block-inner">
+	      <div >
+	         <div class="col-md-12">
+	              <div class="table-responsive" >
+	              	<table class="table" >
+	              		<thead>
+	              			<th>ID</th>
+	              			<th>Nome</th>
+	              			<th></th>
+	              			<th></th>
+	              		</thead>
+	              		<tbody>
+	              			<tr ng-repeat="proposta in propostaList" >
+	              				<th>{{proposta.id}}</th>
+		              			<th>
+							        <span editable-text="proposta.nome" e-name="nome" e-form="rowform" onbeforesave="checkName($data, proposta.id)" e-required>
+							          {{ proposta.nome || 'empty' }}
+							        </span>
+							    </th>
+		              			<th><button id="status-{{proposta.id}}" class="btn btn-lg btn-primary glyphicon glyphicon-info-sign" ng-class="{'btn-success': proposta.status == 'ativo', 'btn-danger': proposta.status == 'inativo'}" title="{{proposta.status == 'inativo'? 'Inativo':'Ativo'}}"></button></th>
+		              			<th><button ng-click="removeProposta(proposta)" id="remove-{{proposta.id}}" class="btn btn-lg btn-danger glyphicon glyphicon-remove" ></button></th>
+	              			</tr>
+	              		</tbody>
+	              	</table>
+	              </div>
+	         </div>
+	      </div>
+      
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
