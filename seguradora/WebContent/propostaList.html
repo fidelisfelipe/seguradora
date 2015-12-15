@@ -7,14 +7,16 @@
   <div class="panel-heading" >Filtrar por:</div>
   <div class="panel-body">
   
-		    <!-- Nº Apólice -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="apolice">Nº Apólice:</label>
-		    <div class="col-sm-2">
-		      <input type="text" class="form-control" id="apolice" placeholder="Nº Apólice">
-		    </div>
-		  </div>
-		  
+		    <!-- Pesquisa-->
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<div class="col-sm-5">
+							<input type="text" class="form-control" placeholder="Pesquisa" ng-model="searchText">
+						</div>
+					</div>
+				</form>
+
   </div>
 </div>
 
@@ -40,7 +42,7 @@
 	              			<th></th>
 	              		</thead>
 	              		<tbody>
-	              			<tr ng-repeat="proposta in propostaList" >
+	              			<tr ng-repeat="proposta in propostaList | filter:searchText" >
 	              				<th>{{proposta.id}}</th>
 		              			<th>
 							        <span editable-text="proposta.nome" e-name="nome" e-form="rowform" onbeforesave="checkName($data, proposta.id)" e-required>
