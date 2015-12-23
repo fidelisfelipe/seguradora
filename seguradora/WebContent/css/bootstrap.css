@@ -6565,3 +6565,34 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+/*abas css*/
+.tabs-nav {padding: 20px 0 0; list-style: none;}
+.tabs-nav li {display: inline;}
+.tabs-nav a {
+	display:inline-block;
+	border: 1px solid #ddd;
+	border-bottom: none;
+	padding: 15px;
+	cursor: pointer;
+	border-radius: 5px 5px 0 0;
+	font-size: 14px;
+	color: #fff;
+	background: #5BC0DE;
+}
+
+.tabs-nav .active {
+	background: #fff;
+	color: rgba(20, 144, 64, 0.7);
+	border-bottom: 1px solid #fff;
+	margin-bottom: -1px;
+}
+
+.tabs-container{
+	padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+}
+.tab-content {
+	border: 1px solid #ddd;
+	padding: 20px;
+}

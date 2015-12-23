@@ -197,6 +197,12 @@ function setMascaras(){
 	controllers.controller('proposta-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaCtrl]);
 	function setPropostaCtrl(scope, interval, log, modal, rootScope){
 		console.log("proposta-ctrl");
+		
+		scope.selectedTab = function(item){
+			scope.tab=item;
+			log.info('select tab proposta: '+scope.tab);
+		}
+		
 		scope.title = "Nova Proposta";
 		scope.proposta = new Proposta();
 		scope.seguradoras = [
@@ -210,8 +216,36 @@ function setMascaras(){
 		scope.validarCampos = function(){
 			log.info("validar campos");
 		}
+		
+		scope.next = function (element){
+			log.info('next');
+		}
+		scope.back = function (){
+			log.info('back');
+		}
+		
+		scope.showPartForm = function(){
+			//select default aba
+			scope.tab = 1;
+			
+			//inicializa formulariio com o primeiro quadrante ativo
+			scope.formDadosSeguroShow = false;
+			scope.formDadosTitularShow = false;
+			scope.formDadosCondutorPrincipalShow = false;
+			scope.formPerfilCondutorPrincipalShow = false;
+			scope.formDadosCondutorMenorShow = false;
+			scope.formDadosVeiculoShow = false;
+			
+			log.info('define show div');
+		}
+		
+		
+		
+		scope.showPartForm();
+		
 		//setMascaras();
 	}
+	
 	
 	controllers.controller('proposta-list-ctrl', [nameVarInject, nameVarInterval, nameVarLog, nameVarModal, nameVarRootScope, setPropostaListCtrl]);
 	function setPropostaListCtrl(scope, interval, log, modal, rootScope){

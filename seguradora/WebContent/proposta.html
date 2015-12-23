@@ -1,527 +1,273 @@
 <div class="pages">
-  <h3>{{title}}</h3>
+<p>
+	<div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+    </div>
+</p>
 
+	<ul class="tabs-nav">
+		<li><a ng-click="selectedTab(1)" ng-class="{'active' : tab==1}">Dados do Seguro</a></li>
+		<li><a ng-click="selectedTab(2)" ng-class="{'active' : tab==2}">Dados do Titular</a></li>
+		<li><a ng-click="selectedTab(3)" ng-class="{'active' : tab==3}">Dados do Condutor Principal</a></li>
+		<li><a ng-click="selectedTab(4)" ng-class="{'active' : tab==4}">Perfil do Condutor Principal</a></li>
+		<li><a ng-click="selectedTab(5)" ng-class="{'active' : tab==5}">Condutor Menor de 25 anos</a></li>
+		<li><a ng-click="selectedTab(6)" ng-class="{'active' : tab==6}">Dados do Veículo</a></li>
+		<li><a ng-click="selectedTab(7)" ng-class="{'active' : tab==7}">Revise as informações</a></li>
+	</ul>
 <form class="form-horizontal" role="form">
-
-<div class="panel panel-default">
-  <div class="panel-heading" >Dados do Seguro</div>
-  <div class="panel-body">
-  
-		  <div class="form-group"> 
-		  	<label class="control-label col-sm-2" for="tipoSeguro">Seguro:</label>
-		  	<div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="sel1">
-					    <option ng-repeat="tipoSeguro in tipoSeguroList" value="{{tipoSeguro.id}}" >{{tipoSeguro.nome}}</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>	
-		  <!-- CI -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="ci">CI:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="ci" placeholder="CI">
-		    </div>
-		  </div>
-		  <!-- Seguradora -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="seguradora">Seguradora:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="sel1">
-					    <option ng-repeat="seguradora in seguradoras" value="{{seguradora.id}}" >{{seguradora.nome}}</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Vigencia de-->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="vigencia">Vigência de:</label>
-		    <div class="col-sm-2">
-		      <input type="date" class="form-control" id="vigenciaDe" placeholder="01/01/2016">
-		    </div>
-		  </div>
-		  
-		   <!-- Vigencia atÃ©-->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="vigencia">Vigência até:</label>
-		    <div class="col-sm-2">
-		      <input type="date" class="form-control" id="vigenciaAte" placeholder="01/01/2016">
-		    </div>
-		  </div>
-		  
-		    <!-- NÂº Apólice -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="apolice">Nº Apólice:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="apolice" placeholder="Nº Apólice">
-		    </div>
-		  </div>
-		  <!-- Houve Sinistro -->
-		  <div class="form-group"> 
-		  	<label class="control-label col-sm-2" for="sinistro">Houve Sinistro este Ano?</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="isHouveSinistro">
-					    <option value="true" >Sim</option>
-					    <option value="false" >Não</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  
-		  <!-- Classe de Bônus -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="bonus">Classe de Bônus:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="bonus" placeholder="Classe de Bônus">
-		    </div>
-		  </div>
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="form-group">
-		    <div class="col-sm-5">
-		       <p><a href="#" class="btn btn-primary" role="image" style="width: 100%" id="proximo" src="img/forward.png">Próximo</a></p>
-		    </div>
-		  </div>
+	<div class="tabs-container">
+		<div class="tab-content" ng-show="tab == 1">
 		
-  </div>
-</div>		
-
-<div class="panel panel-default">
-  <div class="panel-heading">Dados do Titular</div>
-  <div class="panel-body">
-	 	<!-- Nome -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="nome">Nome:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="nome" placeholder="Nome">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="rg">RG:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="rg" placeholder="RG">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cpf">CPF:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtEmissao">Data Emissão:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtEmissao" placeholder="01/01/2015">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtNascimento">Data Nascimento:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="orgEmissor">Orgão Emissor:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="orgEmissor" placeholder="Orgão Emissor">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="profissao">Profissão:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="profissao" placeholder="Profissão">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="estadoCivil">Estado Civil:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="estadoCivil" placeholder="Estado Civil">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="endereco">Endereço:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="endereco" placeholder="Endereço">
-		    </div>
-		  </div>
-		  <!-- Possui Garagem -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="isGaragem">Possui Garagem:</label>
-		    
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="isGaragem">
-					    <option value="true" >SIM</option>
-					    <option value="false" >Não</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cep">Cep:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cep">Bairro:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="bairro" placeholder="Bairro">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cidade">Cidade:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cidade" placeholder="Cidade">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="telefone">Telefone:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="telefone" placeholder="Telefone" mask="maskTelefone">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="email">Email:</label>
-		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="email" placeholder="Email">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="habilitacao">Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="habilitacao" placeholder="Habilitação">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtValidade">Data Validade:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
-		    </div>
-		  </div>
-		  
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="row col-sm-5">
-		  	<a href="#" class="btn btn-primary" role="button" style="width: 50%">Voltar</a><a href="#" class="btn btn-primary" role="button" style="width: 50%">Próximo</a>
-		  </div>
-		  
-  </div>	
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">Dados do Condutor Principal</div>
-  <div class="panel-body">
-	 	<!-- Nome -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="nome">Nome:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="nome" placeholder="Nome">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="rg">RG:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="rg" placeholder="RG">
-		    </div>
-		  </div>
-		   <div class="form-group">
-		    <label class="control-label col-sm-2" for="cpf">CPF:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtEmissao">Data Emissão:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtEmissao" placeholder="01/01/2015">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtNascimento">Data Nascimento:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="orgEmissor">Orgão Emissor:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="orgEmissor" placeholder="Orgão Emissor">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="profissao">Profissão:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="profissao" placeholder="Profissão">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="estadoCivil">Estado Civil:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="estadoCivil" placeholder="Estado Civil">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="endereco">Endereço:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="endereco" placeholder="Endereço">
-		    </div>
-		  </div>
-		  <!-- Possui Garagem -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="isGaragem">Possui Garagem:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="isGaragem">
-					    <option value="true" >Sim</option>
-					    <option value="false" >Não</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cep">Cep:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="bairro">Bairro:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="bairro" placeholder="Bairro">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cidade">Cidade:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cidade" placeholder="Cidade">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="telefone">Telefone:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="telefone" placeholder="Telefone">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="email">Email:</label>
-		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="email" placeholder="Email">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="habilitacao">Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="habilitacao" placeholder="Habilitação">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtValidade">Data Validade:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
-		    </div>
-		  </div>
-		  
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="row col-sm-5">
-		  	<a href="#" class="btn btn-primary" role="button" style="width: 50%">Voltar</a><a href="#" class="btn btn-primary" role="button" style="width: 50%">Próximo</a>
-		  </div>
-		  
-  </div>	
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">Perfil do Condutor Principal</div>
-  <div class="panel-body">
-	 	<!-- Endereço do Trabalho -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="enderecoTrabalho">Endereço do Trabalho:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="enderecoTrabalho" placeholder="Endereço do Trabalho">
-		    </div>
-		  </div>
-		  <!-- Possui Garagem -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="isGaragem">Possui Garagem:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="isGaragem">
-					    <option value="true" >SIM</option>
-					    <option value="false" >Não</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Cep -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cep">Cep:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cep" placeholder="Cep" mask="maskCep">
-		    </div>
-		  </div>
-		  <!-- Cidade -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cidade">Cidade:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cidade" placeholder="Cidade">
-		    </div>
-		  </div>
-		  <!-- UF -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="uf">UF:</label>
-		    <div class="col-sm-5">
-			    <div class="form-group">
-				    <div class="col-sm-5">
-						  <select class="form-control" id="uf">
-						    <option value="1" >DF</option>
-						    <option value="2" >GO</option>
+					  <div class="form-group"> 
+						  <select class="form-control" ng-model="seguro.tipoSeguro.nome" title="Tipo de Seguro">
+						    <option ng-repeat="tipoSeguro in tipoSeguroList" value="{{tipoSeguro.nome}}" >{{tipoSeguro.nome}}</option>
 						  </select>
-				    </div>
-			    </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="row col-sm-5">
-		  	<a href="#" class="btn btn-primary" role="button" style="width: 50%">Voltar</a><a href="#" class="btn btn-primary" role="button" style="width: 50%">Próximo</a>
-		  </div>
-		  
-  </div>	
-</div>
+						<!-- NÂº Apólice -->
+					      <input type="text" class="form-control" id="apolice" placeholder="Nº Apólice" ng-model="seguro.apolice">
+					  </div>	
+					  <p>	
+					  <!-- CI -->
+					  <div class="form-group">
+					     <input type="text" class="form-control" id="ci" placeholder="CI">
+					      		 <!-- Seguradora -->
+						<label for="seguradora">Seguradora:</label>
+						 <select class="form-control" >
+						    <option ng-repeat="seguradora in seguradoras" value="{{seguradora.id}}" >{{seguradora.nome}}</option>
+						 </select>
+					  </div>
+					  <p>
+					  <!-- Vigencia de-->
+					  <div class="form-group">
+					    <label for="vigencia">Vigência de:</label>
+					      	<input type="date" class="form-control" id="vigenciaDe" placeholder="01/01/2016">
+					        <!-- Vigencia atÃ©-->
+							<label for="vigencia">Vigência até:</label>
+						    <input type="date" class="form-control" id="vigenciaAte" placeholder="01/01/2016">
+					  </div>
+					   <p>
+					  <!-- Houve Sinistro -->
+					  <div class="form-group"> 
+					  	<label for="sinistro">Houve Sinistro este Ano?</label>
+						  <select class="form-control" id="isHouveSinistro">
+						    <option value="true" >Sim</option>
+						    <option value="false" >Não</option>
+						  </select>
+						 <!-- Classe de Bônus -->
+						<label for="bonus">Classe de Bônus:</label>
+						<input type="text" class="form-control" id="bonus" placeholder="Classe de Bônus">
+					  </div>
+					  
+		</div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">Condutor Menor de 25 anos</div>
-  <div class="panel-body">
-	 	<!-- Nome -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="nome">Nome:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="nome" placeholder="Nome">
-		    </div>
-		  </div>
-		  <!-- Sexo -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="sexo">Sexo:</label>
-		    <div class="col-sm-5">
-		      <div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="sexo">
-					    <option value="1" >Masculino</option>
-					    <option value="2" >Feminio</option>
+		<div class="tab-content" ng-show="tab == 2">
+				 	<!-- Nome -->
+					  <div class="form-group">
+					    <label for="nome">Nome:</label>
+					    <input type="text" class="form-control" id="nome" placeholder="Nome">
+					    <label for="rg">RG:</label>
+					    <input type="text" class="form-control" id="rg" placeholder="RG">
+					    <label for="cpf">CPF:</label>
+						<input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
+					  </div>
+					  <div class="form-group">
+					    <label for="dtEmissao">Data Emissão:</label>
+					     <input type="date" class="form-control" id="dtEmissao" placeholder="01/01/2015">
+					     <label for="dtNascimento">Data Nascimento:</label>
+					      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
+					  </div>
+					  <div class="form-group">
+					    <label for="orgEmissor">Orgão Emissor:</label>
+						    <input type="text" class="form-control" id="orgEmissor" placeholder="Orgão Emissor">
+							<label for="profissao">Profissão:</label>
+							<input type="text" class="form-control" id="profissao" placeholder="Profissão">
+					  </div>
+					  <div class="form-group">
+					    <label for="estadoCivil">Estado Civil:</label>
+					  <select class="form-control" id="estadoCivil">
+					    <option value="solteiro" >Solteiro</option>
+					    <option value="casado" >Casado</option>
 					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Data Nascimento -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtNascimento">Data Nascimento:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
-		    </div>
-		  </div>
-		  <!-- NÂº Habilitação -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="habilitacao">Nº Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="habilitacao" placeholder="Nº Habilitação">
-		    </div>
-		  </div>
-		  <!-- Data Validade Habilitação -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtValidade">Data Validade:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
-		    </div>
-		  </div>
-		  <!-- Data da Primeira Habilitação -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
-		    </div>
-		  </div>
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="row col-sm-5">
-		  	<a href="#" class="btn btn-primary" role="button" style="width: 50%">Voltar</a><a href="#" class="btn btn-primary" role="button" style="width: 50%">Próximo</a>
-		  </div>
-		  
-  </div>	
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">Dados do Veículo</div>
-  <div class="panel-body">
-	 	  <!-- Fabricante -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="fabricante">Fabricante:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="fabricante">
-					    <option value="1" >GM</option>
-					    <option value="2" >Ford</option>
+					    <label for="endereco">Endereço:</label>
+					    <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+					  </div>
+					  <!-- Possui Garagem -->
+					  <div class="form-group">
+					    <label for="isGaragem">Possui Garagem:</label>
+					  <select class="form-control" id="isGaragem">
+					    <option value="true" >SIM</option>
+					    <option value="false" >NÃO</option>
 					  </select>
+					    <label for="cep">Cep:</label>
+					      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
+					   </div>
+					   <div class="form-group">
+						  <label for="cep">Bairro:</label>
+					      <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+					    <label for="cidade">Cidade:</label>
+					    <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+					    <label for="telefone">Telefone:</label>
+					    <input type="text" class="form-control" id="telefone" placeholder="Telefone" mask="maskTelefone">
+					 </div>
+					 <div class="form-group">   
+					    <label  for="email">Email:</label>
+					    <input type="email" class="form-control" id="email" placeholder="Email">
+					    <label  for="habilitacao">Habilitação:</label>
+					    <input type="text" class="form-control" id="habilitacao" placeholder="Habilitação">
+					 </div>
+					 <div class="form-group">
+					    <label  for="dtValidade">Data Validade:</label>
+					    <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
+					    <label  for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
+					    <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
+					  </div>
+					  
+		</div>	
+		<div class="tab-content" ng-show="tab == 3">
+				 	<!-- Nome -->
+					  <div class="form-group">
+					    <label  for="nome">Nome:</label>
+					      <input type="text" class="form-control" id="nome" placeholder="Nome">
+					    <label  for="rg">RG:</label>
+					      <input type="text" class="form-control" id="rg" placeholder="RG">
+					    <label  for="cpf">CPF:</label>
+					      <input type="text" class="form-control" id="cpf" placeholder="CPF" mask="maskCpf">
+					  </div>
+					  <div class="form-group">
+					    <label  for="dtEmissao">Data Emissão:</label>
+					      <input type="date" class="form-control" id="dtEmissao" placeholder="01/01/2015">
+					    <label  for="dtNascimento">Data Nascimento:</label>
+					      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
+					  </div>
+					  <div class="form-group">
+					    <label  for="orgEmissor">Orgão Emissor:</label>
+					      <input type="text" class="form-control" id="orgEmissor" placeholder="Orgão Emissor">
+					    <label  for="profissao">Profissão:</label>
+					      <input type="text" class="form-control" id="profissao" placeholder="Profissão">
+					  </div>
+					  <div class="form-group">
+					    <label  for="estadoCivil">Estado Civil:</label>
+					       <select class="form-control" id="estadoCivil">
+						    <option value="solteiro" >Solteiro</option>
+						    <option value="casado" >Casado</option>
+						  </select>
+					    <label  for="endereco">Endereço:</label>
+					      <input type="text" class="form-control" id="endereco" placeholder="Endereço">
+					  </div>
+					  <!-- Possui Garagem -->
+					  <div class="form-group">
+					    <label  for="isGaragem">Possui Garagem:</label>
+								  <select class="form-control" id="isGaragem">
+								    <option value="true" >SIM</option>
+								    <option value="false" >NÃO</option>
+								  </select>
+					    <label  for="cep">Cep:</label>
+					      <input type="text" class="form-control" id="cep" placeholder="CEP" mask="maskCep">
+					   </div>
+					   <div class="form-group">
+					    <label  for="bairro">Bairro:</label>
+					      <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+					    <label  for="cidade">Cidade:</label>
+					      <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+					    <label  for="telefone">Telefone:</label>
+					      <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+					   </div>
+					  <div class="form-group">
+					    <label  for="email">Email:</label>
+					      <input type="email" class="form-control" id="email" placeholder="Email">
+					    <label  for="habilitacao">Habilitação:</label>
+					      <input type="email" class="form-control" id="habilitacao" placeholder="Habilitação">
+					  </div>
+					  <div class="form-group">
+					    <label  for="dtValidade">Data Validade:</label>
+					      <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
+					    <label  for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
+					      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
+					  </div>
+					  
+		</div>	
+		<div class="tab-content" ng-show="tab == 4">
+				 	<!-- Endereço do Trabalho -->
+					  <div class="form-group">
+					    <label  for="enderecoTrabalho">Endereço do Trabalho:</label>
+					      <input type="text" class="form-control" id="enderecoTrabalho" placeholder="Endereço do Trabalho">
+					  <!-- Possui Garagem -->
+					    <label  for="isGaragem">Possui Garagem:</label>
+						  <select class="form-control" id="isGaragem">
+						    <option value="true" >SIM</option>
+						    <option value="false" >NÃO</option>
+						  </select>
+					  </div>
+					  <div class="form-group">
+					  <!-- Cep -->
+					    <label  for="cep">Cep:</label>
+					      <input type="text" class="form-control" id="cep" placeholder="Cep" mask="maskCep">
+					  <!-- Cidade -->
+					    <label  for="cidade">Cidade:</label>
+					      <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+					  </div>
+					  <div class="form-group">
+					  <!-- UF -->
+					    <label  for="uf">UF:</label>
+					  <select class="form-control" id="uf">
+					    <option value="1" >DF</option>
+					    <option value="2" >GO</option>
+					  </select>
+					  </div>
+					  
+		</div>	
+		<div class="tab-content" ng-show="tab == 5">	
+				 	<!-- Nome -->
+					  <div class="form-group">
+					    <label  for="nome">Nome:</label>
+					      <input type="text" class="form-control" id="nome" placeholder="Nome">
+					  <!-- Sexo -->
+					    <label  for="sexo">Sexo:</label>
+						  <select class="form-control" id="sexo">
+						    <option value="1" >Masculino</option>
+						    <option value="2" >Feminio</option>
+						  </select>
 					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Fipe -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="fipe">Código Fipe:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="fipe" placeholder="Código Fipe">
-		    </div>
-		  </div>
-		  <!-- Modelo -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="modelo">Modelo:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="modelo" placeholder="Modelo">
-		    </div>
-		  </div>
-		  <!-- Ano Fabricação -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="anoFabricacao">Ano Fabricação:</label>
-		    <div class="col-sm-5">
-		      <input type="date" class="form-control" id="anoFabricacao" placeholder="Ano Fabricação">
-		    </div>
-		  </div>
-		  <!-- CombustÃ­vel -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="combustivel">Combustível:</label>
-		    <div class="col-sm-5">
-		      <div class="form-group">
-			    	<div class="col-sm-5">
+					<div class="form-group">
+					  <!-- Data Nascimento -->
+					    <label  for="dtNascimento">Data Nascimento:</label>
+					      <input type="date" class="form-control" id="dtNascimento" placeholder="01/01/2015">
+					  <!-- NÂº Habilitação -->
+					    <label  for="habilitacao">Nº Habilitação:</label>
+					      <input type="email" class="form-control" id="habilitacao" placeholder="Nº Habilitação">
+					  </div>
+					  <!-- Data Validade Habilitação -->
+					  <div class="form-group">
+					    <label  for="dtValidade">Data Validade:</label>
+					      <input type="date" class="form-control" id="dtValidade" placeholder="Data Validade">
+					  <!-- Data da Primeira Habilitação -->
+					    <label  for="dtPrimeiraHabilitacao">Data da 1ª Habilitação:</label>
+					      <input type="date" class="form-control" id="dtPrimeiraHabilitacao" placeholder="Data da 1ª Habilitação">
+					  </div>
+					  
+		</div>
+		<div class="tab-content" ng-show="tab == 6">
+				 	  <!-- Fabricante -->
+					  <div class="form-group">
+					    <label  for="fabricante">Fabricante:</label>
+								  <select class="form-control" id="fabricante">
+								    <option value="1" >GM</option>
+								    <option value="2" >Ford</option>
+								  </select>
+					  <!-- Fipe -->
+					    <label  for="fipe">Código Fipe:</label>
+					      <input type="text" class="form-control" id="fipe" placeholder="Código Fipe">
+					</div>
+					<div class="form-group">
+					  <!-- Modelo -->
+					    <label  for="modelo">Modelo:</label>
+					      <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+					  <!-- Ano Fabricação -->
+					    <label  for="anoFabricacao">Ano Fabricação:</label>
+					      <input type="date" class="form-control" id="anoFabricacao" placeholder="Ano Fabricação">
+					</div>
+					<div class="form-group">
+					  <!-- CombustÃ­vel -->
+					    <label  for="combustivel">Combustível:</label>
 					  <select class="form-control" id="fabricante">
 					    <option value="1" >Gasolina</option>
 					    <option value="2" >Álcool</option>
@@ -529,85 +275,193 @@
 					    <option value="2" >Hibrido</option>
 					    <option value="2" >Flex</option>
 					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Cor -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cor">Cor:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="cor" placeholder="Cor">
-		    </div>
-		  </div>
-		  <!-- Cambio -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="cambio">Cambio:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
-					  <select class="form-control" id="cambio">
-					    <option value="manual" >Manual</option>
-					    <option value="automatico" >Automático</option>
-					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Placa -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="placa">Placa:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="placa" placeholder="Placa" mask="maskPlaca">
-		    </div>
-		  </div>
-		  <!-- Chassi -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="chassi">Chassi:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="chassi" placeholder="Chassi">
-		    </div>
-		  </div>
-		  <!-- Renavan -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="renavan">Renavan:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="renavan" placeholder="Renavan">
-		    </div>
-		  </div>
-		  <!-- Situação -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="situacao">Situação:</label>
-		    <div class="col-sm-5">
-		    	<div class="form-group">
-			    	<div class="col-sm-5">
+					 	
+					  <!-- Cor -->
+					    <label  for="cor">Cor:</label>
+					      <input type="text" class="form-control" id="cor" placeholder="Cor">
+					  <!-- Cambio -->
+					    <label  for="cambio">Cambio:</label>
+								  <select class="form-control" id="cambio">
+								    <option value="manual" >Manual</option>
+								    <option value="automatico" >Automático</option>
+								  </select>
+					  </div>
+					  <div class="form-group">
+					  <!-- Placa -->
+					    <label  for="placa">Placa:</label>
+					      <input type="text" class="form-control" id="placa" placeholder="Placa" mask="maskPlaca">
+					  <!-- Chassi -->
+					    <label  for="chassi">Chassi:</label>
+					      <input type="text" class="form-control" id="chassi" placeholder="Chassi">
+					  <!-- Renavan -->
+					    <label  for="renavan">Renavan:</label>
+					      <input type="text" class="form-control" id="renavan" placeholder="Renavan">
+					    </div>
+					  <!-- Situação -->
+					  <div class="form-group">
+					    <label  for="situacao">Situação:</label>
 					  <select class="form-control" id="situacao">
 					    <option value="1" >Quitado</option>
 					    <option value="2" >Financiado</option>
 					  </select>
-					</div>
-				</div>
-		    </div>
-		  </div>
-		  <!-- Banco -->
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="banco">Banco:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="banco" placeholder="Banco">
-		    </div>
-		  </div>
-		  
-		  <!-- Botoes -->
-		  <div class="col-sm-2">
-		  </div>
-		  <div class="row col-sm-5">
-		  	<a href="#" class="btn btn-primary" role="button" style="width: 100%">Finalizar</a>
-		  </div>
-		  
-  </div>
-</div>
+					  <!-- Banco -->
+					    <label  for="banco">Banco:</label>
+					      <input type="text" class="form-control" id="banco" placeholder="Banco">
+					  </div>
+		</div>
+		<div class="tab-content" ng-show="tab == 7">
+		
+		
+		<form class="form-inline" role="form">
+			<h4>Dados do Seguro</h4>
+			
+			  
+			
+			<label  for="seguro">Seguro:</label>
+			{{seguro.tipoSeguro.nome||"---"}}
+			<label  for="apolice">Apólice:</label>
+			{{seguro.apolice||"---"}}
+			<label  for="ci">CI:</label>
+			12345678
+			<label  for="seguradora">Seguradora:</label>
+			Porto Seguros
+			<label  for="videnciaDe">Vigência de:</label>
+			10/01/2016
+			<label  for="videnciaAte">até</label>
+			10/01/2017
+			<label  for="isSinistro">Houve Sinistro este Ano?</label>
+			NÃO
+			<label  for="classeBonus">Classe de Bônus</label>
+			Média
+			<!-- Dados do Titular -->
+			<h4>Dados do Titular</h4>
+			<label  for="nome">Nome:</label>
+			João Paulo de Amaral
+			<label  for="rg">RG:</label>
+			1234567
+			<label  for="cpf">CPF:</label>
+			444.555.666-78
+			<label  for="dataEmissao">Data Emissão:</label>
+			12/01/1995
+			<label  for="dataNascimento">Data Nascimento:</label>
+			10/01/1986
+			<label  for="orgaoEmissor">Orgão Emissor:</label>
+			SSP/DF
+			<label  for="profissao">Profissão:</label>
+			Engenheiro Civíl
+			<label  for="estadoCivil">Estado Civil:</label>
+			Solteiro
+			<label  for="endereco">Endereço:</label>
+			QNM 38 conjunto K casa 47
+			<label  for="isGaragem">Possui Garagem:</label>
+			SIM
+			<label  for="cep">CEP:</label>
+			72185-811
+			<label  for="bairro">Bairro:</label>
+			Setor M Norte
+			<label  for="cidade">Cidade:</label>
+			Taguatinga Norte
+			<label  for="telefone">Telefone:</label>
+			(61)86075892
+			<label  for="email">Email:</label>
+			Email
+			<label  for="habilitacao">Habilitação:</label>
+			1234567
+			<label  for="dataValidade">Data Validade:</label>
+			10/01/2017
+			<label  for="profissao">Data da 1ª Habilitação:</label>
+			10/01/2015
+			
+			<h4>Dados do Condutor Principal</h4>
+			<label  for="nome">Nome:</label>
+			João Paulo de Amaral
+			<label  for="rg">RG:</label>
+			1234567
+			<label  for="cpf">CPF:</label>
+			444.555.666-78
+			<label  for="dataEmissao">Data Emissão:</label>
+			12/01/1995
+			<label  for="dataNascimento">Data Nascimento:</label>
+			10/01/1986
+			<label  for="orgaoEmissor">Orgão Emissor:</label>
+			SSP/DF
+			<label  for="profissao">Profissão:</label>
+			Engenheiro Civíl
+			<label  for="estadoCivil">Estado Civil:</label>
+			Solteiro
+			<label  for="endereco">Endereço:</label>
+			QNM 38 conjunto K casa 47
+			<label  for="isGaragem">Possui Garagem:</label>
+			SIM
+			<label  for="cep">CEP:</label>
+			72185-811
+			<label  for="bairro">Bairro:</label>
+			Setor M Norte
+			<label  for="cidade">Cidade:</label>
+			Taguatinga Norte
+			<label  for="telefone">Telefone:</label>
+			(61)86075892
+			<label  for="email">Email:</label>
+			Email
+			<label  for="habilitacao">Habilitação:</label>
+			1234567
+			<label  for="dataValidade">Data Validade:</label>
+			10/01/2017
+			<label  for="profissao">Data da 1ª Habilitação:</label>
+			10/01/2015
+			<h4>Perfil do Condutor Principal</h4>
+			<label  for="enderecoTrabalho">Endereço do Trabalho:</label>
+			SIG Quadra 06 Lote 2080
+			<label  for="cep">Cep:</label>
+			72123-000
+			<label  for="cep">Cidade:</label>
+			Brasilia
+			<label  for="uf">UF:</label>
+			Distrito Federal
+			<h4>Condutor Menor de 25 anos</h4>
+			<label  for="nome">Nome:</label>
+			Marcos Silvestre Abadia
+			<label  for="sexo">Sexo:</label>
+			Masculino
+			<label  for="dataNascimento">Data Nascimento:</label>
+			10/02/1995
+			<label  for="habilitacao">Nº Habilitação:</label>
+			1234567
+			<label  for="dataValidade">Data Validade:</label>
+			10/02/2014
+			<label  for="dataHabilitacao">Data da 1ª Habilitação:</label>
+			10/02/2017
+			<h4>Dados do Veículo</h4>
+			<label  for="fabricante">Fabricante:</label>
+			Chevrolet
+			<label  for="codigoFipe">Código Fipe:</label>
+			1234567
+			<label  for="modelo">Modelo:</label>
+			Classic
+			<label  for="anoFabricacao">Ano Fabricação:</label>
+			2006
+			<label  for="combustivel">Combustível:</label>
+			Flex-Alcóol/Gasolina
+			<label  for="cor">Cor:</label>
+			Azul
+			<label  for="cambio">Câmbio:</label>
+			Automático
+			<label  for="placa">Placa:</label>
+			JKH-9580
+			<label  for="chassi">Chassi:</label>
+			1234567899865434234
+			<label  for="renavan">Renavan:</label>
+			123456789
+			<label  for="situacao">Situação:</label>
+			Quitado
+			<label  for="banco">Banco:</label>
+			Bradesco
+			
+			
+			<!-- Botoes -->
+		  	<a ng-click="finish" class="btn btn-default" role="button" style="width: 100%">Finalizar</a>
+		</form>
+		</div>
 
+	</div>
 </form>
-
-
-

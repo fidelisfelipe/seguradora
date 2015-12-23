@@ -25,15 +25,17 @@
   <body ng-controller="index-ctrl">
 	<div id="out"></div>
     <h1 ng-bind="title"></h1>
-
+<!-- 	<img src="img/logo.png" style="width: 20%; float-right: 10%;"/> -->
 <!-- Perfil Login -->
-
-    <ul class="nav nav-pills">
-		<li ng-repeat="link in links" role="presentation" ><a href="{{link.href}}">{{link.label}}</a></li>
+<div class="tabbable tabs-left">
+    <ul class="tabs-nav">
+		<li ng-repeat="link in links" ><a href="{{link.href}}" ng-click="selectedMenu(link.id)" ng-class="{'active' : menu=={{link.id}} }" >{{link.label}}</a></li>
 	</ul>
+ <div class="tab-content">
     <div ng-view>
-		
+    </div>
 	</div>
+</div>
     
     <!-- Angular -->
     <script type="text/javascript" src="js/angular.js"></script>
